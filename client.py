@@ -5,7 +5,7 @@ import _thread
 
 idGetter = input("Please input player id in int>")
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-sock.connect(('127.0.0.1', 4444))
+sock.connect(('192.168.178.38', 25565))
 pygame.init()
 win = pygame.display.set_mode((640, 480))
 
@@ -73,9 +73,15 @@ player_pos_y = 0
 velocity = 0.3
 frameRate = 1
 
+Clock = pygame.time.Clock()
+
 gameActive = True
 
 while gameActive:
+
+    Clock.tick()
+    frameRate = Clock.get_time()
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gameActive = False
